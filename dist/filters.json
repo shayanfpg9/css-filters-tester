@@ -1,0 +1,127 @@
+{
+    "filters": [
+        {
+            "name": "blur",
+            "suffix": "px",
+            "min": 0,
+            "max": 150,
+            "default": 0,
+            "effect": "filter"
+        },
+        {
+            "name": "sepia",
+            "suffix": "%",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "effect": "filter"
+        },
+        {
+            "name": "saturate",
+            "suffix": "%",
+            "min": 0,
+            "max": 100,
+            "default": 100,
+            "effect": "filter"
+        },
+        {
+            "name": "opacity",
+            "suffix": "%",
+            "min": 0,
+            "max": 100,
+            "default": 100,
+            "effect": "filter"
+        },
+        {
+            "name": "invert",
+            "suffix": "%",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "effect": "filter"
+        },
+        {
+            "name": "hue-rotate",
+            "suffix": "deg",
+            "min": 0,
+            "max": 360,
+            "default": 0,
+            "effect": "filter"
+        },
+        {
+            "name": "grayscale",
+            "suffix": "%",
+            "min": 0,
+            "max": 100,
+            "default": 0,
+            "effect": "filter"
+        },
+        {
+            "name": "contrast",
+            "suffix": "%",
+            "min": 0,
+            "max": 300,
+            "default": 100,
+            "effect": "filter"
+        },
+        {
+            "name": "brightness",
+            "suffix": "",
+            "min": 0,
+            "max": 1,
+            "default": 1,
+            "step": 0.1,
+            "effect": "filter"
+        },
+        {
+            "name": "rotateZ",
+            "suffix": "deg",
+            "min": 0,
+            "max": 360,
+            "default": 0,
+            "effect": "transform"
+        },
+        {
+            "name" : "translate",
+            "multi": [
+                {
+                    "name": "translateX",
+                    "suffix": "px",
+                    "default": 0,
+                    "min": -500,
+                    "max": 500
+                },
+                {
+                    "name": "translateY",
+                    "suffix": "px",
+                    "default": 0,
+                    "min": -500,
+                    "max": 500
+                }
+            ],
+            "effect": "transform"
+        },
+        {
+            "name" : "scale",
+            "multi": [
+                {
+                    "name": "scaleX",
+                    "suffix": "",
+                    "default": 1,
+                    "min": -100,
+                    "step":0.1,
+                    "max": 100
+                },
+                {
+                    "name": "scaleY",
+                    "suffix": "",
+                    "default": 1,
+                    "min": -100,
+                    "step":0.1,
+                    "max": 100
+                }
+            ],
+            "effect": "transform"
+        }
+    ]
+}

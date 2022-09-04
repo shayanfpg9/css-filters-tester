@@ -1,0 +1,17 @@
+{
+  "name": "filter-image",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.54.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "setup": "npm i && gulp"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,302 @@
+:root {
+  --icons-space: 15px;
+}
+
+.card .btn {
+  all: unset;
+  min-width: 24px;
+  height: 24px;
+  margin: 0 0.5rem;
+  margin-bottom: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #fff;
+  border: 4px #fff solid;
+  border-radius: 100%;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.5s ease-in-out;
+}
+@media only screen and (min-width: 0px) and (max-width: 389px) {
+  .card .btn {
+    min-width: 20px;
+    height: 20px;
+  }
+}
+.card .btn:hover {
+  transform: rotateZ(10deg);
+}
+
+* {
+  font-family: helvetica;
+}
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+*[tooltip]:hover:after {
+  content: attr(tooltip);
+  min-width: 6rem;
+  min-height: 1.5rem;
+  padding: 5px 10px;
+  position: absolute;
+  left: -20%;
+  top: 120%;
+  transform: translateX(-30%);
+  text-align: center;
+  border-radius: 5px;
+  z-index: 3;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8549019608);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  background-color: rgba(17, 173, 88, 0.5803921569);
+}
+@media only screen and (min-height: 0px) and (max-height: 479px) {
+  body {
+    background-color: #fff;
+    font-family: monospace;
+  }
+  body > * {
+    display: none;
+  }
+  body::after {
+    content: "your device is really small for visit this website your device should have 540px height";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+.card {
+  width: max(70vw, 250px);
+  height: 65vh;
+  position: absolute;
+  background-color: #eeeded;
+  border-radius: 10px;
+}
+@media only screen and (min-width: 0px) and (max-width: 249px) {
+  .card, .card[filter] {
+    width: 95vw;
+  }
+}
+.card:not([filter]) {
+  padding: 10px;
+}
+.card[filter] {
+  height: 95vh;
+}
+@media only screen and (min-width: 250px) {
+  .card[filter] {
+    width: max(80vw, 250px);
+  }
+}
+.card[export] .notification {
+  transform: translateX(-50%) !important;
+}
+.card .notification {
+  width: min(90vw, 300px);
+  height: 2rem;
+  background-color: rgba(35, 35, 35, 0.8549019608);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  position: fixed;
+  left: 50%;
+  bottom: -100px;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  color: #fff;
+  animation: notification-move 1s ease-in-out;
+  bottom: 10px;
+}
+
+@keyframes notification-move {
+  0% {
+    bottom: -100px;
+  }
+  100% {
+    bottom: 10px;
+  }
+}
+form.upload-form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  height: 60vh;
+  box-shadow: 0 5px 30px #eeeded;
+}
+form.upload-form > *:not([hidden]) {
+  all: unset;
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  text-align: center;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+form.upload-form input#upload:invalid ~ label[for^=upload] {
+  background-color: red;
+}
+form.upload-form input#upload ~ label[for^=upload] {
+  position: relative;
+  background-color: #18a86b;
+}
+form.upload-form > button.random {
+  background-color: orangered;
+}
+form.upload-form > button.random:disabled {
+  filter: grayscale(100%) opacity(40%);
+}
+
+.card {
+  position: relative;
+}
+.card[export] > *:not(.export) {
+  transition: transform 0.5s ease-in;
+  transform: translateX(-100%);
+}
+.card[export] iframe.export, .card[export] .btn[export] {
+  transition: opacity 1s linear;
+  transition-delay: 1s;
+  opacity: 1 !important;
+}
+.card[export] iframe.export {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.card .image {
+  width: 100%;
+  height: 70%;
+  transition: height 1s linear;
+  position: absolute;
+  overflow: hidden;
+  background-color: #c7f9cc;
+  cursor: grab;
+}
+.card .image.full {
+  height: 100%;
+}
+.card .image #preview {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: filter 0.5s linear;
+}
+.card .image .realsize {
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: #99f4a2;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  cursor: default;
+}
+.card .filter-box {
+  width: 100%;
+  height: 30%;
+  transition: height 1s linear;
+  position: absolute;
+  bottom: 0;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.card .filter-box.close {
+  height: 0;
+}
+@media only screen and (min-height: 0px) and (max-height: 539px) {
+  .card .image {
+    height: 50%;
+  }
+  .card .filter-box {
+    height: 50%;
+  }
+}
+.card .btn-bar {
+  margin-top: 10px;
+  padding: 0 10px;
+  min-height: 35px;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.card .btn.refresh {
+  background-image: url("../images/refresh.svg");
+}
+.card .btn.filter {
+  background-image: url("../images/filter.svg");
+}
+.card .btn.transform {
+  background-image: url("../images/transform.svg");
+}
+.card .btn.pointer {
+  background-image: url("../images/pointer.svg");
+}
+.card .btn.restore {
+  background-image: url("../images/restore.svg");
+}
+.card .btn.fullscreen {
+  background-image: url("../images/fullscreen.svg");
+}
+.card .btn.fullscreen.exit {
+  background-image: url("../images/fullscreen-exit.svg");
+}
+.card .btn.table {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  transition: bottom 1s linear;
+}
+.card .btn.table:hover {
+  pointer-events: visibleFill;
+  bottom: 40px;
+}
+.card .btn.table.close {
+  background-image: url("../images/close.svg");
+}
+.card .btn.table.open {
+  background-image: url("../images/open.svg");
+}
+.card .btn.export {
+  right: 10px;
+  background-image: url("../images/export.svg");
+}
+@media only screen and (min-width: 0px) and (max-width: 339px) {
+  .card .btn.export {
+    position: absolute;
+    bottom: 49px;
+  }
+}

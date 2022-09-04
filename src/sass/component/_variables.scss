@@ -1,0 +1,27 @@
+$colors: (
+  "thumb": #80ed99,
+  "range": #c7f9cc,
+  "text": darken(#94d2bd, 30%),
+  "border": #94d2bd,
+);
+
+$effect-size: (
+  "sm": 5px,
+  "md": 10px,
+  "lg": 15px,
+);
+
+$breakpoints: (
+  "xs": 0px,
+  "sm": 480px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+:root {
+  --icons-space: 15px;
+}
+
+$icons-space: var(--icons-space);

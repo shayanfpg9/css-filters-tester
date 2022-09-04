@@ -1,0 +1,71 @@
+@import "./component/variables";
+@import "./component/func-mixin";
+
+* {
+  @include reset();
+}
+
+body {
+  background-color: #1e1e1e;
+  font-family: monospace;
+  @include flex();
+  font-size: 1.5rem;
+
+  .btn {
+    @extend %btn;
+    position: absolute;
+    top: 10px;
+    &.back {
+      right: 10px;
+      background-image: url("../images/back.svg");
+    }
+
+    &.copy {
+      left: 10px ;
+      background-image: url("../images/copy.svg");
+    }
+
+    &.download {
+      left: 10px + 24 + 15;
+      background-image: url("../images/download.svg");
+    }
+  }
+
+  code {
+    max-width: 90vw;
+
+    color: white;
+
+    p.write-code {
+      margin-left: 2rem;
+    }
+
+    span {
+      &.selector {
+        color: #d6b97c;
+      }
+
+      &.brace {
+        color: #bfbfbf;
+      }
+
+      &.prop {
+        color: #9ad8ea;
+      }
+
+      &.value {
+        &.num {
+          color: #a3ba98;
+        }
+
+        &.str {
+          color: #bb856e;
+        }
+
+        &.function {
+          color: #dac3a3;
+        }
+      }
+    }
+  }
+}

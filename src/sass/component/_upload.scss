@@ -1,0 +1,52 @@
+form.upload-form {
+  //properties
+  position: relative;
+  @include flex();
+
+  //size
+  height: 60vh;
+
+  @include shadow(
+    #eeeded,
+    30px,
+    (
+      "x": 0,
+      "y": 5px,
+    )
+  );
+
+  > *:not([hidden]) {
+    all: unset;
+
+    width: 90%;
+    height: 50px;
+
+    @include flex();
+
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  input#upload {
+    &:invalid ~ label[for^="upload"] {
+      background-color:red;
+    }
+
+    ~ label[for^="upload"] {
+      position: relative;
+
+      background-color: #18a86b;
+    }
+  }
+
+  > button.random {
+    // background-color: #064789;
+    background-color: orangered;
+
+    &:disabled{
+      filter: grayscale(100%) opacity(40%);
+    }
+  }
+}

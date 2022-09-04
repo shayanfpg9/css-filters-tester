@@ -1,0 +1,144 @@
+@mixin flex($jsc: center, $aligni: center, $fflow: row wrap) {
+  display: flex;
+  justify-content: $jsc;
+  align-items: $aligni;
+  flex-flow: $fflow;
+}
+
+@mixin reset() {
+  &,
+  &::after,
+  &::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  &[tooltip] {
+    &:hover {
+      &:after {
+        content: attr(tooltip);
+        min-width: 6rem;
+        min-height: 1.5rem;
+
+        padding: 5px 10px;
+
+        position: absolute;
+        left: -20%;
+        top: 120%;
+        transform: translateX(-30%);
+
+        text-align: center;
+
+        border-radius: 5px;
+
+        z-index: 3;
+
+        font-size: 1rem;
+
+        background-color: #ffffffda;
+      }
+    }
+  }
+}
+
+@mixin shadow($color, $size: "md", $pos: ("x": 0, "y": 0)) {
+  @if (map-has-key($effect-size, $size)) {
+    $size: map-get($effect-size, $size);
+  }
+
+  box-shadow: map-get($pos, "x") map-get($pos, "y") $size $color;
+}
+
+@mixin rangestyle() {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  cursor: pointer;
+
+  $color: map-get($colors, "thumb");
+  background-color: $color;
+
+  position: relative;
+}
+
+@mixin scroller($size, $bgColor, $sColor, $display) {
+  scrollbar-width: thin;
+  scrollbar-color: $sColor $bgColor;
+
+  &::-webkit-scrollbar {
+    @each $key, $val in $size {
+      #{$key}: $val;
+    }
+    background-color: $bgColor;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $sColor;
+    border-radius: 10px;
+  }
+}
+
+@mixin media($f: "xs", $t: none, $change: width) {
+  $from: map-get($breakpoints, $f);
+  $to: map-get($breakpoints, $t);
+
+  @if (map-has-key($breakpoints, $f) == false) {
+    $from: $f;
+  }
+
+  @if (map-has-key($breakpoints, $t) == false) {
+    $to: $t;
+  }
+
+  @if ($to == none) {
+    @media only screen and (min-#{$change}: $from) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-#{$change}: $from) and (max-#{$change}: $to - 1) {
+      @content;
+    }
+  }
+}
+
+%btn {
+  all: unset;
+
+  @include media("xs", 390px) {
+    min-width: 20px;
+    height: 20px;
+  }
+  min-width: 24px;
+  height: 24px;
+
+  margin: 0 0.5rem {
+    bottom: 5px;
+  }
+
+  background: {
+    repeat: no-repeat;
+    position: center;
+    size: cover;
+    color: #fff;
+  }
+
+  border: 4px #fff solid {
+    radius: 100%;
+  }
+
+  cursor: pointer;
+
+  // &:not(.table,.export) {
+  //   top: 10px;
+  // };
+
+  z-index: 2;
+
+  transition: transform 0.5s ease-in-out;
+
+  &:hover {
+    transform: rotateZ(10deg);
+  }
+}

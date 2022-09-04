@@ -1,0 +1,192 @@
+.card {
+  position: relative;
+
+  &[export] {
+    & > *:not(.export) {
+      transition: transform 0.5s ease-in;
+      transform: translateX(-100%);
+    }
+
+    %opacity {
+      transition: opacity 1s linear;
+      transition-delay: 1s;
+      opacity: 1 !important;
+    }
+
+    .btn[export] {
+      @extend %opacity;
+    }
+
+    iframe.export {
+      @extend %opacity;
+
+      position: absolute;
+      bottom: 0;
+
+      width: 100%;
+      height: 100%;
+
+      border: none;
+
+      border-bottom: {
+        right-radius: 10px;
+        left-radius: 10px;
+      }
+    }
+  }
+
+  .image {
+    width: 100%;
+    height: 70%;
+
+    transition: height 1s linear;
+    &.full {
+      height: 100%;
+    }
+
+    position: absolute;
+
+    $bgc: #c7f9cc;
+
+    overflow: hidden;
+
+    background-color: $bgc;
+
+    cursor: grab;
+
+    #preview {
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+
+      background : {
+        size: contain;
+        repeat: no-repeat;
+        position: center;
+      }
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: filter 0.5s linear;
+    }
+
+    .realsize {
+      padding: 5px;
+
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+
+      background-color: darken($bgc, 10);
+      font-size: 0.8rem;
+      border-radius: 10px;
+
+      cursor: default;
+    }
+  }
+
+  .filter-box {
+    width: 100%;
+    height: 30%;
+
+    transition: height 1s linear;
+    &.close {
+      height: 0;
+    }
+
+    position: absolute;
+    bottom: 0;
+
+    border: none;
+
+    border-bottom: {
+      right-radius: 10px;
+      left-radius: 10px;
+    }
+  }
+
+  @include media("xs", 540px, height) {
+    .image {
+      height: 50%;
+    }
+
+    .filter-box {
+      height: 50%;
+    }
+  }
+
+  .btn-bar {
+    margin-top: 10px;
+    padding: 0 10px;
+
+    min-height: 35px;
+    width: 100%;
+
+    overflow: visible;
+
+    @include flex(flex-start);
+  }
+
+  .btn {
+    @extend %btn;
+
+    &.refresh {
+      background-image: url("../images/refresh.svg");
+    }
+
+    &.filter {
+      background-image: url("../images/filter.svg");
+    }
+
+    &.transform {
+      background-image: url("../images/transform.svg");
+    }
+
+    &.pointer {
+      background-image: url("../images/pointer.svg");
+    }
+
+    &.restore {
+      background-image: url("../images/restore.svg");
+    }
+
+    &.fullscreen {
+      background-image: url("../images/fullscreen.svg");
+
+      &.exit {
+        background-image: url("../images/fullscreen-exit.svg");
+      }
+    }
+
+    &.table {
+      position: absolute;
+      bottom: 10px;
+      right: 30px;
+
+      transition: bottom 1s linear;
+
+      &:hover {
+        bottom: 40px;
+      }
+
+      &.close {
+        background-image: url("../images/close.svg");
+      }
+
+      &.open {
+        background-image: url("../images/open.svg");
+      }
+    }
+
+    &.export {
+      @include media("xs", 340px) {
+        position: absolute;
+        bottom: calc(10px + 24px + 15px);
+      }
+
+      right: 10px;
+      background-image: url("../images/export.svg");
+    }
+  }
+}
